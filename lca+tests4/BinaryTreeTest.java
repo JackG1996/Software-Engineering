@@ -19,7 +19,7 @@ public class BinaryTreeTest
 
 		BST.put(1, 1);   //  /     \      \
 											
-		BST.put(2, 2);   // 1       6		12
+		BST.put(2, 2);   // 1       6		_12_
 
 		BST.put(6, 6);   //  \     /	   /   \
 
@@ -53,50 +53,34 @@ public class BinaryTreeTest
 		
 	}
 	
+	
 	@Test
-	public void testLcaNull()
+	public void testPut()
 	{
-		BinaryTree<Integer, Integer> BST = new BinaryTree<Integer, Integer>(); 
+		BinaryTree<Integer, Integer> BST = new BinaryTree<Integer, Integer>();
 		
 		BST = new BinaryTree<Integer, Integer>();
+		
 		BST.put(7, 7);
-		
 		assertNull("Checking the LCA of a tree with no children", BST.lca(7,7)); // passing in the root twice will return null
+		assertNull("Checking the LCA on a tree with one node", BST.lca(7,null)); // passing in null will return null also
 		
 		BST = new BinaryTree<Integer, Integer>();
-		BST.put(null, null);
-		assertNull("Checking if the root is null", BST.lca(null,null));
 		
-		BST = new BinaryTree<Integer, Integer>();
-		BST.put(1, 1);
-		BST.put(2,null);
-	
-		assertNull("Checking if LCA is null when child node value is null", BST.lca(1, 2));
-		
-		BST = new BinaryTree<Integer, Integer>();
-		BST.put(1, null);
-		BST.put(2,null);
-	
-		assertNull("Checking if LCA is null when both node values are null", BST.lca(1, 2));
-		
-		BST = new BinaryTree<Integer, Integer>();
-		BST.put(1, 1);
-		BST.put(null,2);
-		
-		assertNull("Checking if LCA is null when child node key is null", BST.lca(1, 2));
-		
-		BST = new BinaryTree<Integer, Integer>();
 		BST.put(null, 1);
-		BST.put(null,2);
+		assertEquals("Testing when null key and valid value inserted", 0, BST.size());
 		
-		assertNull("Checking if LCA is null when both node keys are null", BST.lca(1, 2));
-		
-		BST = new BinaryTree<Integer, Integer>();
-		BST.put(null, null);
-		BST.put(null,null);
-		
-		assertNull("Checking if LCA is null when both node keys and values are null", BST.lca(null, null));
-		
+		BST.put(1, null);
+		assertEquals("Testing when valid key and null value inserted", 0, BST.size());
+
+		BST.put(7, 7);   //        _7_
+        BST.put(7, 8);   //        _7_
+        assertEquals("Check if code properly insert nodes based upon key", 1, BST.size()); // size is one and not 2 despite two puts as keys are the same
+        
+  /*      BST.put(7, 7);   //        _7_
+        BST.put(8, 7);   //        _7_
+        assertEquals("Check if code properly registers that the same value has been inputted", 1, BST.size()); // size is one and not 2 despite two puts as value is same*/
+      
 		BST = new BinaryTree<Integer, Integer>();
 		BST.put(7, 7);
 		BST.put(10, 10);
@@ -107,6 +91,18 @@ public class BinaryTreeTest
 	
 		assertNull("Checking LCA of a node that is not present", BST.lca(4, 6));
 		assertNull("Checking LCA of two nodes that are not present", BST.lca(4, 2));
+		
+    	BST = new BinaryTree<Integer, Integer>();
+        BST.put(7, 7);   //        _7_
+        BST.put(8, 8);   //      /     \
+        BST.put(3, 3);   //    _3_      8
+        BST.put(1, 1);   //  /     \
+        BST.put(2, 2);   // 1       6
+        BST.put(6, 6);   //  \     /
+        BST.put(4, 4);   //   2   4
+        BST.put(5, 5);   //  /     \
+                         //         5
+        assertEquals("Check if the nodes are inserted in the correct order", "(((()1(()2()))3((()4(()5()))6()))7(()8()))", BST.printKeysInOrder());
 		
 	}
 	
@@ -124,24 +120,8 @@ public class BinaryTreeTest
 		
 		assertEquals("Checking the lca of negative nodes", "-8", BST.lca(-6, -9));
 		
-		assertEquals("Checking the lca of negative nodes", "7", BST.lca(10, -9));
+		assertEquals("Checking the lca of a negative node and a positive node", "7", BST.lca(10, -9));
 		
 	}
-<<<<<<< HEAD
-
-=======
-	
-	@Test
-	public void nonWorkingTests()
-	{
-		BinaryTree<Integer, Integer> BST = new BinaryTree<Integer, Integer>();  
-		BST = new BinaryTree<Integer, Integer>(); 
-		BST.put(7, 7);
 		
-	//	assertNull("Checking the LCA on a tree with one node", BST.lca(7,null)); // return null for lca as root has no children and the node null was not put into the tree the code does not work but....
-		assertNull("Checking the LCA on a tree with one node", BST.lca(7,0)); // With the same testing and using zero instead of null the code does work
-	}
-	
-	
->>>>>>> assignment#1
 }
