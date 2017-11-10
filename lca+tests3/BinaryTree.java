@@ -17,7 +17,7 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
 			this.N = N;
 		}
 	}
-<<<<<<< HEAD
+
 	public boolean isEmpty() {
 		return size() == 0;
 	}
@@ -33,10 +33,8 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
 			return x.N;
 		}
 	}
-	
-=======
 
->>>>>>> assignment#1
+
 	public boolean contains(Key key) {
 	
 		return get(key) != null;
@@ -54,11 +52,11 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
 	    
 	public void put(Key key, Value val) {
 		
-<<<<<<< HEAD
+
 		if (val == null || key == null || contains(key)) {
-=======
+
 		if (val == null || key == null) {
->>>>>>> assignment#1
+
 			return;
 
 			}
@@ -74,7 +72,7 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
 			x.left = put(x.left, key, val);
 		else if (cmp > 0)
 			x.right = put(x.right, key, val);
-<<<<<<< HEAD
+
 		
 		x.N = 1 + size(x.left) + size(x.right);
 		return x;
@@ -108,11 +106,11 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
 				return result;
 			}
 		}
-=======
+
 
 		return x;
 	}
->>>>>>> assignment#1
+
 
 	public String lca(Key x1, Key x2) {
 		

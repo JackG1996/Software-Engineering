@@ -127,9 +127,9 @@ public class BinaryTreeTest
 		assertEquals("Checking the lca of negative nodes", "7", BST.lca(10, -9));
 		
 	}
-<<<<<<< HEAD
 
-=======
+
+
 	
 	@Test
 	public void nonWorkingTests()
@@ -142,6 +142,5 @@ public class BinaryTreeTest
 		assertNull("Checking the LCA on a tree with one node", BST.lca(7,0)); // With the same testing and using zero instead of null the code does work
 	}
 	
-	
->>>>>>> assignment#1
+
 }
