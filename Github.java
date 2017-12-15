@@ -14,7 +14,7 @@ public class Github {
 		String inputLine;
 
 		while ((inputLine = in.readLine()) != null)
-			System.out.println(inputLine);
+			System.out.println(inputLine + "\n");
 		in.close();
 	}
 
