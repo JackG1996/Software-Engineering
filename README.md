@@ -1,5 +1,5 @@
 # Sweng
 Software Engineering YearJS
 
-FIND FOLDER WITH "FINAL" WRITTEN IN IT AND THAT WILL BE THE FINISHED PRODUCT
+finished product is in assignment2 and the folder with "FINAL" written on it
 
